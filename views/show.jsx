@@ -1,23 +1,30 @@
-const React = require('react')
-const Default = require('./layouts/default')
+const React = require("react");
+const Default = require("./layouts/default");
 
-function show({bread}) {
-    console.log(bread.name)
-    return (
-        <Default>
-            <main>
-                <h2>Show Page 🙃</h2>
-                <h3>{bread.name}
-                {
-                    bread.hasGluten
-                    ? <span> (contains Gluten)</span>
-                    : <span>!</span>
-                }</h3>
-                <img src={bread.image} alt={bread.name}/>
-                <li><a href="/breads">Home</a></li>
-            </main>
-        </Default>
-    )
+function show({ bread }) {
+  console.log(bread.name);
+  return (
+    <Default>
+      <main>
+        <h2>{bread.name}</h2>
+        <h5>
+          {bread.hasGluten ? (
+            <span>
+              <i class="fa-solid fa-wheat-awn-circle-exclamation fa-lg"></i>
+            </span>
+          ) : (
+            <span></span>
+          )}
+        </h5>
+        <img src={bread.image} alt={bread.name} />
+        <div className="backButton">
+          <a href="/breads">
+            <button>Go back to bread list</button>
+          </a>
+        </div>
+      </main>
+    </Default>
+  );
 }
 
-module.exports = show
+module.exports = show;

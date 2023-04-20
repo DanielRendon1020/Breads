@@ -2,9 +2,18 @@ body {
     background-color: floralwhite;
 }
 
+a {
+    text-decoration: none;
+}
+
 img {
     width: 50%;
     display: block;
     margin: auto;
+    padding: 2rem;
     border-radius: 2rem;
+}
+
+button:hover {
+    background-color: #33c3f0;
 }
