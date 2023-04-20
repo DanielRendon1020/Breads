@@ -23,6 +23,6 @@ breadsRoute.get('/:arrayIndex', (req, res) => {
     res.render('error404')
   }
 
-})  
+})
 
 module.exports = breadsRoute
