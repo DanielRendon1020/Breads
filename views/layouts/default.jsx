@@ -18,6 +18,7 @@ function Default(html) {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/main.css" />
+        <link rel="shortvut icon" type="image/svg" href="/images/bread-slice-solid.svg" />
         <script src="https://kit.fontawesome.com/6eb0b848be.js" crossorigin="anonymous"></script>
       </head>
       <body>

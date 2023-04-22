@@ -30,11 +30,18 @@ breadsRoute.get("/new", (req, res) => {
   res.render("new");
 });
 
+// DELETE
+breadsRoute.delete('/:indexArray', (req, res) => {
+  Bread.splice(req.params.indexArray, 1)
+  res.status(303).redirect('/breads')
+})
+
 // SHOW
 breadsRoute.get("/:arrayIndex", (req, res) => {
   if (Bread[req.params.arrayIndex]) {
     res.render("show", {
       bread: Bread[req.params.arrayIndex],
+      index: req.params.arrayIndex,
     });
   } else {
     res.render("error404");
@@ -42,3 +49,4 @@ breadsRoute.get("/:arrayIndex", (req, res) => {
 });
 
 module.exports = breadsRoute;
+
