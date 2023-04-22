@@ -30,11 +30,30 @@ breadsRoute.get("/new", (req, res) => {
   res.render("new");
 });
 
+// UPDATE
+breadsRoute.put("/:arrayIndex", (req, res) => {
+  if (req.body.hasGluten === "on") {
+    req.body.hasGluten = true;
+  } else {
+    req.body.hasGluten = false;
+  }
+  Bread[req.params.arrayIndex] = req.body;
+  res.redirect(`/breads/${req.params.arrayIndex}`);
+});
+
+// EDIT
+breadsRoute.get("/:arrayIndex/edit", (req, res) => {
+  res.render("edit", {
+    bread: Bread[req.params.arrayIndex],
+    index: req.params.arrayIndex,
+  });
+});
+
 // DELETE
-breadsRoute.delete('/:indexArray', (req, res) => {
-  Bread.splice(req.params.indexArray, 1)
-  res.status(303).redirect('/breads')
-})
+breadsRoute.delete("/:arrayIndex", (req, res) => {
+  Bread.splice(req.params.arrayIndex, 1);
+  res.status(303).redirect("/breads");
+});
 
 // SHOW
 breadsRoute.get("/:arrayIndex", (req, res) => {
@@ -49,4 +68,3 @@ breadsRoute.get("/:arrayIndex", (req, res) => {
 });
 
 module.exports = breadsRoute;
-

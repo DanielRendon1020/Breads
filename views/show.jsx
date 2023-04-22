@@ -10,13 +10,16 @@ function show({ bread, index }) {
         <h5>
           {bread.hasGluten ? (
             <span>
-              <i class="fa-solid fa-wheat-awn-circle-exclamation fa-lg"></i>
+              <i className="fa-solid fa-wheat-awn-circle-exclamation fa-lg"></i>
             </span>
           ) : (
             <span></span>
           )}
         </h5>
         <img src={bread.image} alt={bread.name} />
+        <a href={`/breads/${index}/edit`}>
+          <button>Edit</button>
+        </a>
         <form action={`/breads/${index}?_method=DELETE`} method="POST">
           <input type="submit" value="DELETE" />
         </form>
