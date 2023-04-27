@@ -1,27 +1,36 @@
 const React = require("react");
 const Default = require("./layouts/default");
 
-function show({ bread, index }) {
+function show({ bread, index, title }) {
   console.log(bread.name);
   return (
-    <Default>
+    <Default title={title}>
       <main>
-        <h2>{bread.name}</h2>
-        <h5>
-          {bread.hasGluten ? (
-            <span>
-              <i className="fa-solid fa-wheat-awn-circle-exclamation fa-lg"></i>
-            </span>
-          ) : (
-            <span></span>
-          )}
-        </h5>
+        <div id="show-title">
+          <h2>{bread.name}</h2>
+          <h5 id="gluten-marker">
+            {bread.hasGluten ? (
+              <span>
+                <i
+                  id="gluten-icon"
+                  className="fa-solid fa-wheat-awn-circle-exclamation fa-lg"
+                ></i>
+              </span>
+            ) : (
+              <span id="no-gluten">
+                <i id="wheat" className="fa-solid fa-wheat-awn fa-lg"></i>
+                <i id="slash" className="fa-solid fa-slash fa-lg"></i>
+              </span>
+            )}
+          </h5>
+        </div>
+        <hr />
         <img src={bread.image} alt={bread.name} />
         <a href={`/breads/${index}/edit`}>
           <button>Edit</button>
         </a>
         <form action={`/breads/${index}?_method=DELETE`} method="POST">
-          <input type="submit" value="DELETE" />
+          <input id="delete-button" type="submit" value="DELETE" />
         </form>
         <div className="backButton">
           <a href="/breads">

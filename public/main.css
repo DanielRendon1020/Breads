@@ -2,6 +2,63 @@ body {
     background-color: floralwhite;
 }
 
+img {
+    filter: drop-shadow(8px 8px 3px #33c3f0);
+}
+
+#bread-list {
+    margin-bottom: 5rem;
+}
+
+#bread-list li {
+   font-size: large;
+   font-weight: bold;
+}
+
+#gluten-icon {
+    animation: alert 1s infinite
+}
+
+#home-bread {
+    padding: 2rem;
+}
+
+hr {
+    margin: 1rem;
+}
+
+#show-title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#show-title h2, #show-title h5 {
+    margin: 0;
+}
+
+
+/* Small work around for gluten free icon */
+#no-gluten {
+    position: relative;
+}
+#slash, #wheat{
+    position: absolute;
+    top: 50%;
+}
+#gluten-indicators span {
+    display: block;
+    margin-top: 1rem;
+}
+#gf {
+    margin-left: 28px;
+}
+
+
+.newButton {
+    margin-top: 2rem;
+}
+
 a {
     text-decoration: none;
 }
@@ -16,4 +73,18 @@ img {
 
 button:hover {
     background-color: #33c3f0;
+}
+
+#delete-button:hover {
+    background-color: #33c3f0;
+}
+
+@keyframes alert {
+    from {
+        color: #33c3f0;
+    }
+    to {
+        color: black;
+    }
+
 }
