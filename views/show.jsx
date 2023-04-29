@@ -26,10 +26,11 @@ function show({ bread, index, title }) {
         </div>
         <hr />
         <img src={bread.image} alt={bread.name} />
-        <a href={`/breads/${index}/edit`}>
+        <p>Baked by: <strong>{bread.baker}</strong></p>
+        <a href={`/breads/${bread.id}/edit`}>
           <button>Edit</button>
         </a>
-        <form action={`/breads/${index}?_method=DELETE`} method="POST">
+        <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
           <input id="delete-button" type="submit" value="DELETE" />
         </form>
         <div className="backButton">
