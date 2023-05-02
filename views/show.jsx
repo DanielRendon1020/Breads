@@ -26,7 +26,7 @@ function show({ bread, index, title }) {
         </div>
         <hr />
         <img src={bread.image} alt={bread.name} />
-        <p>Baked by: <strong>{bread.baker}</strong></p>
+        <p>{bread.getBakedBy()}</p>
         <a href={`/breads/${bread.id}/edit`}>
           <button>Edit</button>
         </a>
