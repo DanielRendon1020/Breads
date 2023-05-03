@@ -6,11 +6,16 @@ img {
     filter: drop-shadow(8px 8px 3px #33c3f0);
 }
 
-#bread-list {
+#index-page {
+    display: flex;
+    justify-content: space-around;
+}
+
+#bread-list, #baker-list {
     margin-bottom: 5rem;
 }
 
-#bread-list li {
+#bread-list li, #baker-list li {
    font-size: large;
    font-weight: bold;
 }
@@ -21,6 +26,11 @@ img {
 
 #home-bread {
     padding: 2rem;
+}
+
+#baker-name {
+    font-weight: bolder;
+    text-shadow: 5px 5px 3px #33c3f0;
 }
 
 hr {

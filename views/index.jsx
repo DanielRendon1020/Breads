@@ -1,39 +1,57 @@
 const React = require("react");
 const Default = require("./layouts/default");
 
-function Index({ breads, title }) {
+function Index({ breads, bakers, title }) {
   return (
     <Default title={title}>
-      <h2>Breads</h2>
-      <ul id="bread-list">
-        {breads.map((bread, id) => {
-          return (
-            <main id>
-              <li key={id} id="bread-item">
-                <a href={`/breads/${bread.id}`}>{bread.name}</a>
-              </li>
-            </main>
-          );
-        })}
-      </ul>{" "}
-      <div id="gluten-indicators">
-        <span>
-          <i
-            id="gluten-icon"
-            className="fa-solid fa-wheat-awn-circle-exclamation fa-lg"
-          ></i>{" "}
-          Contains Gluten
-        </span>
-        <span id="no-gluten">
-            <i id="wheat" className="fa-solid fa-wheat-awn fa-lg"></i>
-            <i id="slash" className="fa-solid fa-slash fa-lg"></i>
-          <span id="gf">Gluten Free</span>
-        </span>
-      </div>
-      <div className="newButton">
-        <a href="/breads/new">
-          <button>ADD MORE BREAD</button>
-        </a>
+      <div id="index-page">
+        <div id="bread-list">
+          <h2>Breads</h2>
+          <ul>
+            {breads.map((bread, id) => {
+              return (
+                <main>
+                  <li key={breads.id} id="bread-item">
+                    <a href={`/breads/${bread.id}`}>{bread.name}</a>
+                  </li>
+                </main>
+              );
+            })}
+          </ul>{" "}
+          <div id="gluten-indicators">
+            <span>
+              <i
+                id="gluten-icon"
+                className="fa-solid fa-wheat-awn-circle-exclamation fa-lg"
+              ></i>{" "}
+              Contains Gluten
+            </span>
+            <span id="no-gluten">
+              <i id="wheat" className="fa-solid fa-wheat-awn fa-lg"></i>
+              <i id="slash" className="fa-solid fa-slash fa-lg"></i>
+              <span id="gf">Gluten Free</span>
+            </span>
+          </div>
+          <div className="newButton">
+            <a href="/breads/new">
+              <button>ADD MORE BREAD</button>
+            </a>
+          </div>
+        </div>
+        <div id="baker-list">
+          <h2>Bakers</h2>
+          <ul>
+            {bakers.map((baker) => {
+              return (
+                <main>
+                  <li key={bakers.id} id="baker-item">
+                    <a href={`/bakers/${baker.id}`}>{baker.name}</a>
+                  </li>
+                </main>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </Default>
   );

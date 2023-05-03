@@ -1,14 +1,17 @@
 const express = require("express");
 const breadsRoute = express.Router();
 const Bread = require("../models/bread.js");
-const Baker = require('../models/baker.js')
+const Baker = require("../models/baker.js");
 
 // INDEX
 breadsRoute.get("/", (req, res) => {
-  Bread.find().then((foundBreads) => {
-    res.render("Index", {
-      breads: foundBreads,
-      title: "List of Breads",
+  Baker.find().then((foundBakers) => {
+    Bread.find().then((foundBreads) => {
+      res.render("Index", {
+        breads: foundBreads,
+        bakers: foundBakers,
+        title: "List of Breads",
+      });
     });
   });
 });
@@ -60,14 +63,13 @@ breadsRoute.get("/data/seed", (req, res) => {
 });
 
 // NEW
-breadsRoute.get('/new', (req, res) => {
-    Baker.find()
-        .then(foundBakers => {
-            res.render('new', {
-                bakers: foundBakers
-            })
-      })
-})
+breadsRoute.get("/new", (req, res) => {
+  Baker.find().then((foundBakers) => {
+    res.render("new", {
+      bakers: foundBakers,
+    });
+  });
+});
 
 // UPDATE
 breadsRoute.put("/:id", (req, res) => {
@@ -85,23 +87,20 @@ breadsRoute.put("/:id", (req, res) => {
 });
 
 // EDIT
-breadsRoute.get('/:id/edit', (req, res) => {
-  Baker.find()
-    .then(foundBakers => {
-        Bread.findById(req.params.id)
-          .then(foundBread => {
-            res.render('edit', {
-                bread: foundBread, 
-                bakers: foundBakers 
-            })
-          })
-    })
-})
+breadsRoute.get("/:id/edit", (req, res) => {
+  Baker.find().then((foundBakers) => {
+    Bread.findById(req.params.id).then((foundBread) => {
+      res.render("edit", {
+        bread: foundBread,
+        bakers: foundBakers,
+      });
+    });
+  });
+});
 
 // DELETE
 breadsRoute.delete("/:id", (req, res) => {
-  Bread.findByIdAndDelete(req.params.id)
-  .then((deletedBread) => {
+  Bread.findByIdAndDelete(req.params.id).then((deletedBread) => {
     res.status(303).redirect("/breads");
   });
 });
@@ -109,9 +108,9 @@ breadsRoute.delete("/:id", (req, res) => {
 // SHOW
 breadsRoute.get("/:id", (req, res) => {
   Bread.findById(req.params.id)
-    .populate('baker')
+    .populate("baker")
     .then((foundBread) => {
-      console.log(foundBread.getBakedBy())
+      console.log(foundBread.getBakedBy());
       res.render("show", {
         bread: foundBread,
         title: foundBread.name,
