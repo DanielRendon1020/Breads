@@ -4,15 +4,14 @@ const Bread = require("../models/bread.js");
 const Baker = require("../models/baker.js");
 
 // INDEX
-breadsRoute.get("/", (req, res) => {
-  Baker.find().then((foundBakers) => {
-    Bread.find().then((foundBreads) => {
-      res.render("Index", {
-        breads: foundBreads,
-        bakers: foundBakers,
-        title: "Breads and Bakers",
-      });
-    });
+breadsRoute.get("/", async (req, res) => {
+  const foundBakers = await Baker.find().lean();
+  const foundBreads = await Bread.find().limit(0).lean();
+  console.log(foundBreads);
+  res.render("Index", {
+    breads: foundBreads,
+    bakers: foundBakers,
+    title: "Breads and Bakers",
   });
 });
 
@@ -93,7 +92,7 @@ breadsRoute.get("/:id/edit", (req, res) => {
       res.render("edit", {
         bread: foundBread,
         bakers: foundBakers,
-        title: `Editing ${foundBread.name}`
+        title: `Editing ${foundBread.name}`,
       });
     });
   });
