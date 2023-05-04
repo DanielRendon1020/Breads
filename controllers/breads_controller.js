@@ -10,7 +10,7 @@ breadsRoute.get("/", (req, res) => {
       res.render("Index", {
         breads: foundBreads,
         bakers: foundBakers,
-        title: "List of Breads",
+        title: "Breads and Bakers",
       });
     });
   });
@@ -93,6 +93,7 @@ breadsRoute.get("/:id/edit", (req, res) => {
       res.render("edit", {
         bread: foundBread,
         bakers: foundBakers,
+        title: `Editing ${foundBread.name}`
       });
     });
   });

@@ -11,7 +11,7 @@ const breadSchema = new Schema({
   },
 });
 
-// Helper Methods
+//    Helper Methods
 breadSchema.methods.getBakedBy = function () {
   return `${this.name} was baked with love by ${
     this.baker.name

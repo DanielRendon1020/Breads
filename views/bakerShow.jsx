@@ -1,9 +1,9 @@
 const React = require("react");
 const Default = require("./layouts/default");
 
-function Show({ baker }) {
+function Show({ baker, title }) {
   return (
-    <Default>
+    <Default title={title}>
       <h2 id="baker-name">{baker.name}</h2>
       <p>
         {baker.name} has been baking with us since{" "}
@@ -19,6 +19,9 @@ function Show({ baker }) {
           return <li key={bread.id}>{bread.name}</li>;
         })}
       </ul>
+      <form action={`/bakers/${baker.id}?_method=DELETE`} method="POST">
+        <input type="submit" value="DELETE" />
+      </form>
     </Default>
   );
 }

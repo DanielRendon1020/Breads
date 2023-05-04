@@ -12,19 +12,29 @@ baker.get('/', (req, res) => {
         })
 })
 
+//      Delete
+baker.delete('/:id', (req, res) => {
+    Baker.findByIdAndDelete(req.params.id) 
+      .then(deletedBaker => { 
+        res.status(303).redirect('/breads')
+      })
+})
+
+
 //      Show
 baker.get('/:id', (req, res) => {
     Baker.findById(req.params.id)
         .populate('breads')
         .then(foundBaker => {
             res.render('bakerShow', {
-                baker: foundBaker
+                baker: foundBaker,
+                title: foundBaker.name
             })
         })
 })
 
 
-//      Data Seed
+//      Load Bakers
 baker.get('/data/seed', (req, res) => {
     Baker.insertMany(bakerSeedData)
         .then(res.redirect('/breads'))
